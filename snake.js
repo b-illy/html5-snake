@@ -137,32 +137,25 @@ window.onload = () => {
     /* input handling */
 
     function keydown(event) { // note: inputs only modify speedBuffer, speed is updated every frame
-        // left: 37, up: 38, right: 39, down: 40, esc: 27
-        if (![37, 38, 39, 40].includes(event.keyCode)) return;
-        
         let x, y = 0;
 
-        switch (event.keyCode) {
-            case 37: // left
+        switch (event.key) {
+            case "ArrowLeft": case "a": // left
                 x = -1;
-                y = 0;
                 break;
-            case 38: // up
-                x = 0;
+            case "ArrowUp": case "w": // up
                 y = -1;
                 break;
-            case 39: // right
+            case "ArrowRight": case "d": // right
                 x = 1;
-                y = 0;
                 break;
-            case 40: // down
-                x = 0;
+            case "ArrowDown": case "s": // down
                 y = 1;
                 break;
         }
 
         // dont allow player to turn backwards
-        if (!((x != 0 && x == -speed.x) || (y != 0 && y == -speed.y))) {
+        if (!(x == 0 && y == 0) && !((x != 0 && x == -speed.x) || (y != 0 && y == -speed.y))) { //
             speedBuffer.x = x;
             speedBuffer.y = y;
         }
