@@ -23,7 +23,7 @@ window.onload = () => {
     }
     
     function regenFruit() {
-        let x, y = 0;
+        let x = 0, y = 0;
         for (let i = 0; i < 20; i++) { // only try 20 times to avoid lag / infinite loops
             x = Math.round(Math.random() * (gridSize.x-1));
             y = Math.round(Math.random() * (gridSize.y-1));
@@ -137,7 +137,7 @@ window.onload = () => {
     /* input handling */
 
     function keydown(event) { // note: inputs only modify speedBuffer, speed is updated every frame
-        let x, y = 0;
+        let x = 0, y = 0;
 
         switch (event.key) {
             case "ArrowLeft": case "a": // left
